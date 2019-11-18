@@ -3,7 +3,7 @@ api/serializers.py
 """
 from rest_framework import serializers # (1) NEED TO IMPORT CLASS
 from rest_framework.validators import UniqueTogetherValidator
-from foundation.models import Data # (2) OPTIONAL - IMPORT ANY MODELS WE USE
+from foundations.models import Data # (2) OPTIONAL - IMPORT ANY MODELS WE USE
 
 
 MEMORY_ID = 0

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User # STEP 1: Import the user
 from django.contrib.auth import authenticate, login,logout
 from foundations.models import Sensor,TimeSeriesDatum
+from rest_framework import response,status,views
 
 
 def list_page(request):

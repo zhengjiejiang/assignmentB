@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework import status, response, views
-from dashboard.serializers import AvgSeriliazer
+from dashboard.serializer import AvgSeriliazer
 
 
 
@@ -12,13 +12,13 @@ def dashboard_page(request):
 
 
 
-class DashboardApi(views.APIViews):
+class DashboardApi(views.APIView):
     def post(self, request):
         serializer = AddSeriliazer(data= request.data)
         serializer.is_valid(raise_exception =True)
         serializer.save()
         data = serializer.objects.all()
-    return JsonResponse(data)
+        return JsonResponse(data)
 
 
 
