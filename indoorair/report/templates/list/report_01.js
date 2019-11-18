@@ -11,7 +11,7 @@ function onListClick() {
          }
        }
      }
-       xhttp.open('POST', "{% url 'list' %}", true);
+       xhttp.open('POST', "{% url 'report_01_page' %}", true);
        xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
        xhttp.send();
 
