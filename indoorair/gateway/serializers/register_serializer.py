@@ -6,7 +6,7 @@ from rest_framework.validators import UniqueValidator
 
 
 
-class RegisterSerializer(serializers.Serialzer):
+class RegisterSerializer(serializers.Serializer):
     first_name = serializers.CharField()
     last_name = serializers.CharField()
     email = serializers.EmailField(
@@ -19,9 +19,7 @@ class RegisterSerializer(serializers.Serialzer):
     UniqueValidator(queryset = User.objects.all())
     ]
     )
-    password = serializers.CharField(validators = [
-    UniqueValidator(queryset = User.objects.all())
-    ]
+    password = serializers.CharField(write_only = True
     )
 
 

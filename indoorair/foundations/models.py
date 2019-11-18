@@ -2,36 +2,30 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class Instrument(models.Model):
-    user = models.ForeignKey(# one-to-many
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
     )
     name = models.CharField(max_length=255)
 
-
     def __str__(self):
         return self.name + " " + str(self.user)
 
 
-
-
 class Sensor(models.Model):
-    instrument = models.ForeignKey( # one-to-many
-        to='Instrument',
+    instrument = models.ForeignKey(
+        Instrument,
         on_delete=models.CASCADE
     )
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name +" " + str(self.instrument)
-
-
+        return self.name + " " + str(self.instrument)
 
 
 class TimeSeriesDatum(models.Model):
-    instrument = models.ForeignKey( # one-to-many
+    sensor = models.ForeignKey( # one-to-many
         to='Sensor',
         on_delete=models.CASCADE
     )
@@ -40,7 +34,6 @@ class TimeSeriesDatum(models.Model):
 
     def __str__(self):
         return str(self.sensor) + " is " + str(self.value) + " at " + str(self.time)
-
 
 
 class Data(models.Model):

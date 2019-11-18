@@ -7,6 +7,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User # STEP 1: Import the user
 from django.contrib.auth import authenticate, login,logout
 from rest_framework import views, response, status
+from gateway.serializers import RegisterSerializer,LoginSerializer
+
 
 def login_page(request):
    user = request.user
@@ -16,7 +18,7 @@ def login_page(request):
    return render(request, "gateway/login.html", context)
 
 
-class RegisterAPI(views.APIView):
+class RegisterSerializerAPI(views.APIView):
    def post(self, request):
        serializer = ArchivedWebpageSerializer(data=request.data)
        serializer.is_valid(raise_exception=True)
@@ -25,6 +27,25 @@ class RegisterAPI(views.APIView):
            status=status.HTTP_201_CREATED,
            data=serializer.data,
        )
+
+
+
+class LoginSerializerAPI(views.APIView):
+   def post(self, request):
+       serializer = LoginSerializer(data=request.data,context={
+       'request':request
+       })
+       serializer.is_valid(raise_exception=True)
+       serializer.save()
+       return response.Response(
+           status=status.HTTP_200_OK,
+           data={
+           'result':'Successfully!'
+           }
+       )
+
+
+
 
 def register_page(request):
    user = request.user

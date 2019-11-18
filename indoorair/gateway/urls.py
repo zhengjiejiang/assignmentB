@@ -5,8 +5,8 @@ from . import views
 urlpatterns = [
     path('login', views.login_page, name='login_page'),
     path('register', views.register_page, name='register_page'),
-    path('api/login', views.post_login_api, name='login_api'),
-    path('api/register', views.RegisterAPI.as_view(), name='register_api'),
+    path('api/login', views.LoginSerializerAPI.as_view(), name='login_api'),
+    path('api/register', views.RegisterSerializerAPI.as_view(), name='register_api'),
     path('register/ok', views.registered_success_page, name='registered_page'),
     path('api/logout',views.post_logout_api, name = 'logout_api'),
 

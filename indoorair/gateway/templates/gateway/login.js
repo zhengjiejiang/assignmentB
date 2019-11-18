@@ -8,10 +8,13 @@ function onLoginClick(){
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200){
-      const responseString = this.responseText
-      const loginObject = JSON.parse(this.responseText)
-      if (loginObject.was_successful === true){
+    if (this.readyState == 4 && this.status == 400){
+      alert("username or password incorrect")
+    }
+
+
+    elseif (this.readyState == 4 && this.status == 200){
+
         window.location.href = "/dashboard"
       }else{
         alert(loginObject.reason);
