@@ -16,17 +16,13 @@ def login_page(request):
    return render(request, "gateway/login.html", context)
 
 
-class RegisterApi(views.APIView):
+class RegisterAPI(views.APIView):
    def post(self, request):
-       """
-       This function will handle POSTs and save the inputted data to the
-       database.
-       """
        serializer = ArchivedWebpageSerializer(data=request.data)
        serializer.is_valid(raise_exception=True)
        serializer.save()
        return response.Response(
-           status=status.HTTP_200_OK,
+           status=status.HTTP_201_CREATED,
            data=serializer.data,
        )
 
