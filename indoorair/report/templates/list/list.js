@@ -1,4 +1,4 @@
-function onRetrieveClick() {
+function onListClick() {
 
   var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
@@ -11,7 +11,7 @@ function onRetrieveClick() {
          }
        }
      }
-       xhttp.open('POST', "{% url 'retrieve_profile_api' %}", true);
+       xhttp.open('POST', "{% url 'list' %}", true);
        xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
        xhttp.send();
 

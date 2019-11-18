@@ -6,8 +6,11 @@ from django.contrib.auth import authenticate, login,logout
 
 
 def retrieve_page(request):
-   user = request.user
-   context = {
-       'user': user,
-   }
-   return render(request, "sensor/retrieve.html", context)
+    return render(request, "retrieve/retrieve.html",{},)
+
+
+def retrieve_api(request):
+
+  return JsonResponse({
+
+       })
