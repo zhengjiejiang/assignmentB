@@ -14,7 +14,7 @@ function onGetDashboardOnPageLoad() {
 
        }
      }
-       xhttp.open("GET", "{% url 'dashboard_apis' %}", true);
+       xhttp.open("GET", "{% url 'dashboard_page' %}", true);
 
        xhttp.send();
 

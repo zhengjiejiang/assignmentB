@@ -13,18 +13,13 @@ function onLoginClick(){
     }
 
 
-    elseif (this.readyState == 4 && this.status == 200){
+    else if (this.readyState == 4 && this.status == 201{
 
         window.location.href = "/dashboard"
-      }else{
-        alert(loginObject.reason);
-
       }
     }
-  }
-  xhttp.open("POST","/api/login",true);
-  xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  const string = "username="+username+ "&password="+password
-  xhttp.send(string)
 
-}
+    xhttp.open("POST", "{% url 'login_api' %}", true);
+    xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username="+username+"&password="+password);
+    }

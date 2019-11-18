@@ -20,7 +20,7 @@ def login_page(request):
 
 class RegisterSerializerAPI(views.APIView):
    def post(self, request):
-       serializer = ArchivedWebpageSerializer(data=request.data)
+       serializer = RegisterSerializer(data=request.data)
        serializer.is_valid(raise_exception=True)
        serializer.save()
        return response.Response(

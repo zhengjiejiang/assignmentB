@@ -23,7 +23,7 @@ class RegisterSerializer(serializers.Serializer):
     )
 
 
-    def create(self, validate_data):
+    def create(self, validated_data):
 
         first_name = validated_data.get('first_name')
         last_name = validated_data.get('last_name')
