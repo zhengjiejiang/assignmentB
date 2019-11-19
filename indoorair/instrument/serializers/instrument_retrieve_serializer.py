@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login,logout
 from foundations.models import Instrument, Sensor, TimeSeriesDatum
 
 
-class InstrumentSerializer(serializers.Serializer):
+class  InstrumentRetrieveSerializer(serializers.Serializer):
 
 
     id = serializers.IntegerField(read_only=True)
