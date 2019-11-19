@@ -16,3 +16,9 @@ function onRetrieveClick() {
        xhttp.send();
 
 }
+
+
+
+function onBackClick() {
+    window.location.href = "{% url 'i_retrieve_page' %}";
+}
