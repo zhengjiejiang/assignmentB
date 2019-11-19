@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework import status, response, views
-from dashboard.serializer import AvgSeriliazer
 from foundations.models import Instrument
 from .serializers import DashboardSerializer
 

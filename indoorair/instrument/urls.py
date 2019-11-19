@@ -1,14 +1,15 @@
 from django.urls import path
-
+from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
     path('instrument/create', views.i_create_page, name='i_create_page'),
-    path('instruments', views.i_list_page, name='i_list_page'),
-    path('instrument/<id>', views.i_retrieve_page, name='i_retrieve_page'),
-    path('instrument/<id>/update', views.i_update_page, name='i_update_page'),
-    path('api/create', views.CreateAPIView.as_view()),
-    path('api/instruments', views.ListInstrumentsAPIView.as_view()),
-    path('api/instrument/<id>', views.RetrieveAPIView.as_view()),
-    path('api/instrument/<id>/update', views.UpdateAPIView.as_view()),
+    path('instrument/list', views.i_list_page, name='i_list_page'),
+    path('instrument/retrieve', views.i_retrieve_page, name='i_retrieve_page'),
+    path('instrument/update', views.i_update_page, name='i_update_page'),
+    path('api/instruments/create', views.InstrumentCeateAPI.as_view()),
+    path('api/instruments', views.InstrumentListAPIView.as_view()),
+    path('api/instrument/<int:id>', views.InstrumentRetrieveUpdateAPI.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

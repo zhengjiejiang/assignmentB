@@ -1,16 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
+
 
 
 class Instrument(models.Model):
+    name = models.CharField(max_length = 255)
+    location = models.CharField(max_length = 255)
+    serial_number = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete = models.CASCADE
     )
-    name = models.CharField(max_length=255)
-
     def __str__(self):
-        return self.name + " " + str(self.user)
+        return str(self.name) + " " + str(self.user)
 
 
 class Sensor(models.Model):
@@ -34,11 +37,3 @@ class TimeSeriesDatum(models.Model):
 
     def __str__(self):
         return str(self.sensor) + " is " + str(self.value) + " at " + str(self.time)
-
-
-class Data(models.Model):
-    temperature = models.FloatField()
-    pressure = models.FloatField()
-    co2 = models.FloatField()
-    tvoc = models.FloatField()
-    humidity = models.FloatField()

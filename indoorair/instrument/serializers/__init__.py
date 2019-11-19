@@ -1,0 +1,1 @@
+from instrument.serializers.instrument_retrieve_serializer import InstrumentRetrieveSerializer
