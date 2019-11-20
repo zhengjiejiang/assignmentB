@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<h2> List  the data </h2>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+<body>
+  <script>
+  {% include "report/list.js" %}
+  </script>
+
+  <table style="width:100%">
+    <tr>
+      <th>Report name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Report~1</td>
+      <td>Download time-series data for any sensor</td>
+      <td>
+        <a href= "{% url 'report_01_page' %}"  >View</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+  </table>
+
+
+    <a href="{% url 'dashboard_page' %}">Back to Dashboard</a>
+
+</body>
+</html>

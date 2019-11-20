@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<h2> Report the data </h2>
+<body>
+  <script>
+  {% include "report/report_01.js" %}
+  </script>
+
+
+
+  <p>
+    <button type = button onclick = "DataOnClick();">Download temperature sensor data</button>
+  </p>
+<br/>
+<br/>
+  <a href= "{% url 'report_list_page' %}"  >Back to Reports</a>
+
+
+</body>
+</html>

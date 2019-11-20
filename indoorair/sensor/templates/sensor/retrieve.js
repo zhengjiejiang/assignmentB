@@ -11,7 +11,7 @@ function onRetrieveClick() {
          }
        }
      }
-       xhttp.open('POST', "{% url 'retrieve_profile_api' %}", true);
+       xhttp.open('POST', "{% url 'sensor_retrieve_page' %}", true);
        xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
        xhttp.send();
 
@@ -20,5 +20,5 @@ function onRetrieveClick() {
 
 
 function onBackClick() {
-    window.location.href = "{% url 'i_retrieve_page' %}";
+    window.location.href = "{% url 'dashboard_page' %}";
 }

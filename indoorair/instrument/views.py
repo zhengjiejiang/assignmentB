@@ -6,7 +6,7 @@ from rest_framework import status, views, response
 from django.shortcuts import get_object_or_404
 
 from foundations.models import Instrument
-from .serializers import InstrumentRetrieveSerializer
+from .serializers import InstrumentRetrieveSerializer,InstrumentUpdateSerializer
 
 
 
@@ -53,6 +53,19 @@ def i_update_page(request, id):
     return render(request, "instrument/update.html", {
         "instrument_id": int(id),
     })
+
+class InstrumentUpdateAPI(views.APIView):
+    def put(self, request, id):
+        object = self.get_object(id)
+
+
+
+
+
+
+
+
+
 
 
 class InstrumentRetrieveUpdateAPI(views.APIView):

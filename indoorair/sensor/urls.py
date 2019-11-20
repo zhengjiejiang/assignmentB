@@ -3,8 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('retrieve', views.retrieve_page, name='retrieve_page'),
-    path('api/retrieve1',views.retrieve_api, name = 'retrieve_api'),
+    path('sensor/id:', views.sensor_retrieve_page, name='sensor_retrieve_page'),
+    # path('sensor/api/<int:id>',views.retrieve_api, name = 'retrieve_api'),
 
 
 

@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+import csv
 # from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.models import User # STEP 1: Import the user
@@ -7,14 +8,8 @@ from foundations.models import Sensor,TimeSeriesDatum
 from rest_framework import response,status,views
 
 
-def list_page(request):
-    return render(request, "list/list.html",{},)
-
-def list_api(request):
-
-  return JsonResponse({
-
-       })
+def report_list_page(request):
+    return render(request, "report/list.html",{})
 
 def report_01_page(request):
     return render(request, "report/report_01.html", {})
@@ -30,9 +25,45 @@ class Report_01Api(views.APIView):
         return response.Response(
             status = status.HTTP_200_OK,
             data = {
-                'result' : 'get Successfully!'
+                'result' : ' Successfully!'
             }
         )
+
+def report_01_temp (request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    data = TimeSeriesDatum.objects.filter(
+        sensor__name = "Temperature",
+        sensor__instrument__user = request.user,
+    )
+
+
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="temperature_data.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['sensor_id','time', 'value' ])
+    # writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+    # writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+    for datum in data:
+        writer.writerow([datum.sensor.id,datum.time,datum.value])
+
+
+
+    return response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class ListApi(views.APIView):
@@ -47,6 +78,6 @@ class ListApi(views.APIView):
         return response.Response(
             status = status.HTTP_200_OK,
             data = {
-                'result' : ' get Successfully !'
+                'result' : ' Successfully !'
                 }
             )
